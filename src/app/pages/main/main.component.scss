@@ -1,0 +1,36 @@
+.main{
+}
+
+.welcome{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 30vh;
+}
+
+.gas-meter{
+  display: grid;
+  grid-template-columns: repeat(10, 0.35fr);
+  grid-template-rows: 0.25fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  border: 6px solid crimson;
+  padding: 5vh 10vh;
+
+  background-color: black;
+  color: white;
+  font-size: 24px;
+  font-family: digital, sans-serif;
+  border-radius: 15px;
+}
+
+.gas-meter .slot{
+  border: 2px solid crimson;
+  width: 2vw;
+  text-align: center;
+}
