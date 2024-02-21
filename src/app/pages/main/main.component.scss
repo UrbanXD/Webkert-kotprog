@@ -1,4 +1,8 @@
+@import "../../../variables";
+
 .main{
+  background: $primary-color-2;
+  height: 100vh;
 }
 
 .welcome{
@@ -13,24 +17,60 @@
 }
 
 .gas-meter{
-  display: grid;
-  grid-template-columns: repeat(10, 0.35fr);
-  grid-template-rows: 0.25fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-
-  border: 6px solid crimson;
-  padding: 5vh 10vh;
+  border: 1.5vh solid $primary-color-1;
+  padding: 5vh 10vw;
 
   background-color: black;
   color: white;
-  font-size: 24px;
-  font-family: digital, sans-serif;
-  border-radius: 15px;
+  border-radius: 25%;
 }
 
-.gas-meter .slot{
-  border: 2px solid crimson;
-  width: 2vw;
+.title{
+  font-family: Evogria, sans-serif;
+  font-size: 2.5vh;
   text-align: center;
+
+  margin-top: -1.5vh;
+  margin-bottom: 1.5vh;
+}
+
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 0.35fr);
+  grid-template-rows: 0.25fr;
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+
+  font-family: digital, sans-serif;
+  font-size: 3.75vh; /*5vh*/
+}
+.slot{
+  border: 0.35vh solid $primary-color-1;
+  width: 3vh; /*3.5*/
+  text-align: center;
+}
+
+@media (max-width: 300px) { /* nagyon kis telefon */
+  .gas-meter{
+    padding: 5vh 4.5vw;
+  }
+}
+
+@media (max-width: 500px) and (min-height: 750px) { /* nagyon nagy, magas telefon */
+  .gas-meter{
+    font-size: 3.25vh;
+  }
+  .gas-meter .slot{
+    width: 2.5vh;
+  }
+}
+
+
+@media (min-width: 500px) { /* tablet / gep nezet */
+  .gas-meter{
+    font-size: 5vh;
+  }
+  .gas-meter .slot{
+    width: 3.5vh;
+  }
 }

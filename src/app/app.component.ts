@@ -1,14 +1,21 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import {MainComponent} from "./pages/main/main.component";
+import {MatSidenav} from "@angular/material/sidenav";
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, MainComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'Webkert-kotprog';
+
+  onToggleSideNav(sideNav: MatSidenav){
+    sideNav.toggle();
+  }
+
+  onClose(event: any, sideNav: MatSidenav){
+    if(event === true){
+      sideNav.close();
+    }
+  }
 }

@@ -1,0 +1,20 @@
+a{
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+ul{
+  list-style: none;
+}
+
+mat-sidenav{
+  width: 100%;
+}
+
+mat-sidenav-container{
+  height: 100vh !important;
+}
+
+.mat-drawer-content{
+  overflow: hidden !important;
+}
