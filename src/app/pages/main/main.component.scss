@@ -50,6 +50,11 @@
   text-align: center;
 }
 
+.content{
+  font-family: noto, sans-serif;
+  font-size: 4vh;
+}
+
 @media (max-width: 300px) { /* nagyon kis telefon */
   .gas-meter{
     padding: 5vh 4.5vw;
