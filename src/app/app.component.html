@@ -4,16 +4,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar>
-      <button mat-icon-button fxHide.gt-xs (click)="onToggleSideNav(sidenav)">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <div>Nemzeti E-Gaz</div>
-      <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
-        <ul fxLayout fxLayoutGap="1.5vh">
-          <li><a routerLink="/main" routerLinkActive="active">Main</a></li>
-          <li><a routerLink="/not-found" routerLinkActive="active">Not Found</a></li>
-        </ul>
-      </div>
+      <app-navbar fxFlex fxLayoutAlign="none center" (onToggleSideNav)="onToggleSideNav($event, sidenav)"></app-navbar>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

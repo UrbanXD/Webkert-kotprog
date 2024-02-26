@@ -9,8 +9,10 @@ import {MatSidenav} from "@angular/material/sidenav";
 export class AppComponent {
   title = 'Webkert-kotprog';
 
-  onToggleSideNav(sideNav: MatSidenav){
-    sideNav.toggle();
+  onToggleSideNav(event: any, sideNav: MatSidenav){
+    if(event === true){
+      sideNav.toggle();
+    }
   }
 
   onClose(event: any, sideNav: MatSidenav){

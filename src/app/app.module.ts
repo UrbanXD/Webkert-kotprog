@@ -15,10 +15,12 @@ import {MatIconButton} from "@angular/material/button";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {SideMenuComponent} from "./shared/side-menu/side-menu.component";
 import {MatListModule} from "@angular/material/list";
+import {NavbarComponent} from "./shared/navbar/navbar.component";
 @NgModule({
   declarations: [
     AppComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,7 @@ import {MatListModule} from "@angular/material/list";
     MatIconModule,
     MatIconButton,
     FlexLayoutModule,
-    MatListModule
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
