@@ -1,0 +1,16 @@
+<div fxLayout fxLayoutAlign="center center" style="width: 100%">
+  <div fxLayout fxLayoutAlign="none center" fxLayoutGap="2vh" style="margin-right: auto;">
+    <img src="assets/gazora_logo.png" class="logo" />
+    <div class="title">Nemzeti <span color="$pri">E</span>-<span>Gaz</span></div>
+  </div>
+  <button mat-icon-button fxHide.gt-xs fxLayout fxLayoutAlign="flex-end" (click)="toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</div>
+<div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+  <ul fxLayout fxLayoutGap="1.5vh">
+    <li><a routerLink="/main" routerLinkActive="active">Főoldal</a></li>
+    <li><a routerLink="/login" routerLinkActive="active">Bejelentkezés</a></li>
+    <li><a routerLink="/not-found" routerLinkActive="active">Not Found</a></li>
+  </ul>
+</div>

@@ -1,0 +1,79 @@
+@import "../../../variables";
+
+img{
+  width: 6.5vh; height: 6.5vh;
+}
+.title{
+  color: whitesmoke;
+  font-size: 3vh;
+  font-weight: 600;
+}
+.title span:first-of-type{
+  color: $primary-color-1;
+}
+.title span:last-of-type{
+  color: $primary-color-2;
+}
+a{
+  display: block;
+
+  font-size: 2.5vh;
+  color: whitesmoke;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 4vh;
+  letter-spacing: 2px;
+
+  transition: all ease-out 300ms;
+}
+a:after {
+  position: absolute;
+  bottom: 0; left: 50%;
+
+  width: 0;height: 3px;
+
+  background-color: $primary-color-1;
+  transform-origin: bottom right;
+
+  border-radius: 15px;
+
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+
+  content: '';
+}
+a:hover{
+  color: #ffffff;
+}
+
+a:hover:after{
+  left: 0;
+
+  width: 100%;
+}
+
+ul{
+  list-style: none;
+}
+
+li{
+  position: relative;
+
+  display: block;
+
+  text-align: center;
+
+  margin: 0 1vh;
+}
+
+.active{
+  color: whitesmoke !important;
+  font-size: 2.75vh;
+  font-weight: 600;
+}
+.active:after{
+  width: 100% !important;
+  left: 0 !important;
+  background-color: $primary-color-1;
+}
+
