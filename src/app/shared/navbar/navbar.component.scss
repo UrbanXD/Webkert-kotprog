@@ -1,4 +1,6 @@
-@import "../../../variables";
+@use '@angular/material' as mat;
+@include mat.core();
+@import "../../../theme";
 
 img{
   width: 6.5vh; height: 6.5vh;
@@ -9,10 +11,10 @@ img{
   font-weight: 600;
 }
 .title span:first-of-type{
-  color: $primary-color-1;
+  color: mat.get-color-from-palette($Webkert-kotprog-primary, default);
 }
 .title span:last-of-type{
-  color: $primary-color-2;
+  color: mat.get-color-from-palette($Webkert-kotprog-accent, default);
 }
 a{
   display: block;
@@ -33,7 +35,7 @@ a:after {
 
   width: 0;height: 3px;
 
-  background-color: $primary-color-1;
+  background-color: mat.get-color-from-palette($Webkert-kotprog-primary, default);
   transform-origin: bottom right;
 
   border-radius: 15px;
@@ -74,6 +76,6 @@ li{
 .active:after{
   width: 100% !important;
   left: 0 !important;
-  background-color: $primary-color-1;
+  background-color: mat.get-color-from-palette($Webkert-kotprog-primary, default);;
 }
 

@@ -2,5 +2,7 @@
   <img src="assets/not-found.png" alt="Error 404">
   <h1 class="title">Hoppá! Az oldal nem található.</h1>
   <p class="description">A keresett oldal nem létezik vagy elérhetetlen.</p>
-  <a routerLink="/" mat-raised-button><mat-icon>arrow_back</mat-icon>Vissza a főoldalra</a>
+  <a [routerLink]="['/']" mat-raised-button>
+    <mat-icon>arrow_back</mat-icon>Vissza a főoldalra
+  </a>
 </div>

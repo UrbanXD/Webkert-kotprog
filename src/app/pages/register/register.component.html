@@ -1,1 +1,54 @@
-<p>register works!</p>
+<div fxFlex>
+  <form [formGroup]="registerForm" (ngSubmit)="register();" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5vh" style="padding: 7.5vh 5vw;">
+    <div class="form-title">Hozz letre uj felhasznalot!</div>
+    <mat-form-field color="accent">
+      <mat-label>Emailcim</mat-label>
+      <input matInput type="text" formControlName="email" />
+      @if (registerForm.get('email')?.invalid) {
+        <mat-error>
+          <mat-icon style="font-size: x-large !important; display: inline-table; margin: 0 0.5vw">cancel</mat-icon> {{ getErrorMessage(registerForm, "email") }}
+        </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field color="accent">
+      <mat-label>Vezetéknév</mat-label>
+      <input matInput type="text" formControlName="lastname" />
+      @if (registerForm.get('lastname')?.invalid) {
+        <mat-error>
+          <mat-icon style="font-size: x-large !important; display: inline-table; margin: 0 0.5vw">cancel</mat-icon> {{ getErrorMessage(registerForm, "lastname", "name") }}
+        </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field color="accent">
+      <mat-label>Keresztnév</mat-label>
+      <input matInput type="text" formControlName="firstname" />
+      @if (registerForm.get('firstname')?.invalid) {
+        <mat-error>
+          <mat-icon style="font-size: x-large !important; display: inline-table; margin: 0 0.5vw">cancel</mat-icon> {{ getErrorMessage(registerForm, "firstname", "name") }}
+        </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field color="accent">
+      <mat-label>Jelszó</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Elrejtés'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      @if (registerForm.get('password')?.invalid) {
+        <mat-error>
+          <mat-icon style="font-size: x-large !important; display: inline-table; margin: 0 0.5vw">cancel</mat-icon> {{ getErrorMessage(registerForm, "password", "strongpassword") }}
+        </mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field color="accent">
+      <mat-label>Ujra Jelszó</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="rpassword" />
+      @if (!registerForm.get('password')?.invalid && registerForm.get('rpassword')?.invalid) {
+        <mat-error>
+          <mat-icon style="font-size: x-large !important; display: inline-table; margin: 0 0.5vw">cancel</mat-icon> {{ getErrorMessage(registerForm, "rpassword") }}
+        </mat-error>
+      }
+    </mat-form-field>
+    <button mat-raised-button color="accent">Bejelentkezés</button>
+  </form>
+</div>

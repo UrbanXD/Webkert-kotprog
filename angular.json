@@ -8,7 +8,7 @@
     }
   },
   "projects": {
-    "Webkert-kotprog": {
+    "webkert-kotprog": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Webkert-kotprog:build:production"
+              "buildTarget": "webkert-kotprog:build:production"
             },
             "development": {
-              "buildTarget": "Webkert-kotprog:build:development"
+              "buildTarget": "webkert-kotprog:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "Webkert-kotprog:build"
+            "buildTarget": "webkert-kotprog:build"
           }
         },
         "test": {
@@ -93,6 +93,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "webkert-kotprog:build:production",
+              "serveTarget": "webkert-kotprog:serve:production"
+            },
+            "development": {
+              "buildTarget": "webkert-kotprog:build:development",
+              "serveTarget": "webkert-kotprog:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

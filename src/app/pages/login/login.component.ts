@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {User} from "../../shared/models/User";
+import { User } from "../../shared/models/User";
+import { getErrorMessage, STRONG_PASSWORD_REGX } from "../../shared/constants";
+import {AuthService} from "../../shared/services/auth.service";
+import {Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -9,35 +12,35 @@ import {User} from "../../shared/models/User";
 })
 export class LoginComponent {
   hide = true;
-
-  // loginForm = new FormGroup({
-  //   email: new FormControl('', [Validators.required, Validators.email]),
-  //   password: new FormControl(''),
-  // })
+  asd = new FormGroup({
+    ASD: new FormControl("")
+  })
   loginForm = this.createForm({
     email: '',
     password: ''
   });
-  constructor(private formBuilder: FormBuilder){ }
+
+  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService){ }
 
   createForm(model: User){
     let formGroup = this.formBuilder.group(model);
     formGroup.get('email')?.addValidators([Validators.required, Validators.email])
     formGroup.get('password')?.addValidators([Validators.required])
+
     return formGroup;
   }
 
-  login(){
+  async login(){
     if(this.loginForm.valid){
-      //ellenorizni db-be van-e felhasznalo + jelszo egyezik-e
+      console.log("xd")
+      this.authService.login(this.loginForm?.get('email')?.value!, this.loginForm.get('password')?.value!).then(cred => {
+        console.log("asdddddddddddddd");
+        this.router.navigateByUrl("/main");
+      }).catch(error => {
+        console.log(error);
+      })
     }
   }
 
-  // getErrorMessage() {
-  //   if (this.email.hasError('required')) {
-  //     return 'You must enter a value';
-  //   }
-  //
-  //   return this.email.hasError('email') ? 'Not a valid email' : '';
-  // }
+    protected readonly getErrorMessage = getErrorMessage;
 }

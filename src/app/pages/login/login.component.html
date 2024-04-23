@@ -1,20 +1,27 @@
-<div class="page" fxFlex>
-  <form [formGroup]="loginForm" fxLayout="column" fxLayoutAlign="center center" style="padding: 7.5vh 5vw;">
-    <div>Jelentkezz be!</div>
+<div fxFlex>
+  <form [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5vh" style="padding: 7.5vh 5vw;">
+    <div class="form-title">Jelentkezz be!</div>
       <mat-form-field color="accent">
         <mat-label>Emailcim</mat-label>
         <input matInput type="text" formControlName="email" />
-        @if (loginForm.get('email')?.invalid){
-          <mat-error>Hat ez shit</mat-error>
+        @if (loginForm.get('email')?.invalid) {
+          <mat-error>
+            <mat-icon style="font-size: x-large !important; display: inline-table; margin: 0 0.5vw">cancel</mat-icon> {{ getErrorMessage(loginForm, "email") }}
+          </mat-error>
         }
       </mat-form-field>
       <mat-form-field color="accent">
         <mat-label>Jelszó</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Elrejtés'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
+        @if (loginForm.get('password')?.invalid) {
+          <mat-error>
+            <mat-icon style="font-size: x-large !important; display: inline-table; margin: 0 0.5vw">cancel</mat-icon> {{ getErrorMessage(loginForm, "password") }}
+          </mat-error>
+        }
       </mat-form-field>
-      <button mat-raised-button>Bejelentkezés</button>
+      <button mat-raised-button color="accent">Bejelentkezés</button>
   </form>
 </div>

@@ -1,4 +1,6 @@
-@import "../../../variables";
+@use '@angular/material' as mat;
+@include mat.core();
+@import "../../../theme";
 
 .welcome{
   display: flex;
@@ -12,7 +14,7 @@
 }
 
 .gas-meter{
-  border: 1.5vh solid $primary-color-1;
+  border: 1.5vh solid mat.get-color-from-palette($Webkert-kotprog-primary, default);
   padding: 5vh 10vw;
 
   background-color: black;
@@ -40,14 +42,16 @@
   font-size: 3.75vh; /*5vh*/
 }
 .slot{
-  border: 0.35vh solid $primary-color-1;
+  border: 0.35vh solid mat.get-color-from-palette($Webkert-kotprog-primary, default);
   width: 3vh; /*3.5*/
   text-align: center;
 }
 
 .content{
-  font-family: noto, sans-serif;
+  font-family: Evogria, sans-serif;
   font-size: 4vh;
+
+  text-align: center;
 }
 
 @media (max-width: 300px) { /* nagyon kis telefon */

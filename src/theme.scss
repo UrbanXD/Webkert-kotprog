@@ -1,0 +1,84 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$my-red-palette: (
+  50: #ffe8e6,
+  100: #ffc9b9,
+  200: #ffa58c,
+  300: #ff7f5d,
+  400: #ff5d38,
+  500: #ff3510,
+  600: #ff2e0b,
+  700: #fd2403,
+  800: #ef1700,
+  900: #d80000,
+  A100: #ff80ab,
+  A200: #ff4081,
+  A400: #f50057,
+  A700: #c51162,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  )
+);
+
+$my-blue-palette: (
+  50: #e1f1fe,
+  100: #b6dcfd,
+  200: #85c7fd,
+  300: #4eb1fc,
+  400: #00a0fd,
+  500: #0090fc,
+  600: #0082ee,
+  700: #0070db,
+  800: #005fc9,
+  900: #0041a9,
+  A100: #c2e4ff,
+  A200: #addcff,
+  A400: #1f9eff,
+  A700: #00518f,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  )
+);
+
+$Webkert-kotprog-primary: mat.define-palette($my-red-palette);
+$Webkert-kotprog-accent: mat.define-palette($my-blue-palette);
+
+$Webkert-kotprog-warn: mat.define-palette(mat.$red-palette);
+
+$Webkert-kotprog-theme: mat.define-light-theme((
+  color: (
+    primary: $Webkert-kotprog-primary,
+    accent: $Webkert-kotprog-accent,
+    warn: $Webkert-kotprog-warn,
+  )
+));
+
+@include mat.all-component-themes($Webkert-kotprog-theme);

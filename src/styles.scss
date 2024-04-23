@@ -1,108 +1,10 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat.core();
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$my-red-palette: (
-  50: #ffe8e6,
-  100: #ffc9b9,
-  200: #ffa58c,
-  300: #ff7f5d,
-  400: #ff5d38,
-  500: #ff3510,
-  600: #ff2e0b,
-  700: #fd2403,
-  800: #ef1700,
-  900: #d80000,
-  A100: #ff80ab,
-  A200: #ff4081,
-  A400: #f50057,
-  A700: #c51162,
-  contrast: (
-    50: rgba(black, 0.87),
-    100: rgba(black, 0.87),
-    200: rgba(black, 0.87),
-    300: rgba(black, 0.87),
-    400: rgba(black, 0.87),
-    500: white,
-    600: white,
-    700: white,
-    800: white,
-    900: white,
-    A100: rgba(black, 0.87),
-    A200: rgba(black, 0.87),
-    A400: white,
-    A700: white,
-  )
-);
-
-$my-blue-palette: (
-  50: #e1f1fe,
-  100: #b6dcfd,
-  200: #85c7fd,
-  300: #4eb1fc,
-  400: #00a0fd,
-  500: #0090fc,
-  600: #0082ee,
-  700: #0070db,
-  800: #005fc9,
-  900: #0041a9,
-  A100: #c2e4ff,
-  A200: #addcff,
-  A400: #1f9eff,
-  A700: #00518f,
-  contrast: (
-    50: rgba(black, 0.87),
-    100: rgba(black, 0.87),
-    200: rgba(black, 0.87),
-    300: rgba(black, 0.87),
-    400: rgba(black, 0.87),
-    500: white,
-    600: white,
-    700: white,
-    800: white,
-    900: white,
-    A100: rgba(black, 0.87),
-    A200: rgba(black, 0.87),
-    A400: white,
-    A700: white,
-  )
-);
-
-$Webkert-kotprog-primary: mat.define-palette($my-red-palette);
-$Webkert-kotprog-accent: mat.define-palette($my-blue-palette);
-
-// The warn palette is optional (defaults to red).
-$Webkert-kotprog-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$Webkert-kotprog-theme: mat.define-light-theme((
-  color: (
-    primary: $Webkert-kotprog-primary,
-    accent: $Webkert-kotprog-accent,
-    warn: $Webkert-kotprog-warn,
-  )
-));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($Webkert-kotprog-theme);
-
-@import "variables";
+@import "theme";
 
 @font-face {
   font-family: digital;
-  src: url(assets/fonts/digital-7.ttf);
+  src: url("assets/fonts/digital-7.ttf");
 }
 
 @font-face {
@@ -110,22 +12,17 @@ $Webkert-kotprog-theme: mat.define-light-theme((
   src: url("assets/fonts/NotoSans_Condensed-Bold.ttf");
 }
 
-body, html {
-  margin: 0;
-  padding: 0;
-}
-
 * {
   box-sizing: border-box;
 }
 
+body, html {
+  margin: 0;
+  padding: 0;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  height: 100%;
 
-.page{
-  background: #818589;
-  height: 100vh;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 mat-form-field{
@@ -133,4 +30,39 @@ mat-form-field{
 }
 mat-label {
   font-size: 2.25vh !important;
+}
+
+mat-error{
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  background: gainsboro;
+  position: absolute;
+  left: 0;
+  width: 100%;
+
+  padding: 1vh 0;
+
+  text-align: left;
+
+  white-space: pre-line;
+}
+
+form .form-title{
+  font-size: 7vh;
+  font-weight: bolder;
+  color: mat.get-color-from-palette($Webkert-kotprog-accent, default);
+
+  text-align: center;
+
+  text-shadow: -0.5px 0.5px 0 black,
+  0.5px 0.5px 0 black,
+  0.5px -0.5px 0 black,
+  -0.5px -0.5px 0 black;
+}
+
+mat-sidenav-content{
+  background: #818589;
+  height: 100vh !important;
 }

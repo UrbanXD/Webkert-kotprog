@@ -1,6 +1,8 @@
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
+import {AuthGuard} from "./shared/services/auth.guard";
+
 
 const routes: Routes = [
   {
@@ -10,11 +12,11 @@ const routes: Routes = [
     path: 'main', loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule)
   },
   {
-    path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule) },
+    path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule), canActivate: [AuthGuard]
+  },
   {
-    path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
-  {
-    path: 'register', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) },
+    path: 'register', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule), canActivate: [AuthGuard]
+  },
   {
     path: '**', loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule)
   }

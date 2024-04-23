@@ -1,4 +1,6 @@
-@import "../../../variables";
+@use '@angular/material' as mat;
+@include mat.core();
+@import "../../../theme";
 
 .container {
   display: flex;
@@ -8,7 +10,7 @@
 
   //height: 100vh;
 
-  color: $primary-color-2;
+  color: mat.get-color-from-palette($Webkert-kotprog-accent, default);
   text-align: center;
 }
 

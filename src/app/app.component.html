@@ -1,10 +1,10 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav (click)="onClose(true, sidenav)">
-    <app-side-menu (onCloseSideNav)="onClose($event, sidenav)"></app-side-menu>
+    <app-side-menu (onCloseSideNav)="onClose($event, sidenav)" [loggedInUser]="loggedInUser" (onLogout)="logout($event)"></app-side-menu>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar>
-      <app-navbar fxFlex fxLayoutAlign="none center" (onToggleSideNav)="onToggleSideNav($event, sidenav)"></app-navbar>
+      <app-navbar fxFlex fxLayoutAlign="none center" (onToggleSideNav)="onToggleSideNav($event, sidenav)" [loggedInUser]="loggedInUser" (onLogout)="logout($event)"></app-navbar>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

@@ -5,6 +5,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {FlexModule} from "@angular/flex-layout";
 
 const routes: Routes = [{ path: '', component: MainComponent }]
+console.log(typeof routes)
 
 @NgModule({
   declarations: [

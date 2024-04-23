@@ -7,15 +7,16 @@ import {RouterLink, RouterOutlet} from "@angular/router";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
-import {MainComponent} from "./pages/main/main.component";
-import {NotFoundComponent} from "./pages/not-found/not-found.component";
-import {CustomersModule} from "./customers/customers.module";
-import {CustomersComponent} from "./customers/customers.component";
 import {MatIconButton} from "@angular/material/button";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {SideMenuComponent} from "./shared/side-menu/side-menu.component";
 import {MatListModule} from "@angular/material/list";
 import {NavbarComponent} from "./shared/navbar/navbar.component";
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import {AngularFireModule} from "@angular/fire/compat";
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,11 @@ import {NavbarComponent} from "./shared/navbar/navbar.component";
     MatIconButton,
     FlexLayoutModule,
     MatListModule,
+    AngularFireModule.initializeApp({"projectId":"webfejl-kotprog-2024","appId":"1:1082888666344:web:04fce4b4b12dc29a7d9d5d","storageBucket":"webfejl-kotprog-2024.appspot.com","apiKey":"AIzaSyAdfvo_5fRpmK_jncaQQVKFDwpc8-lij6c","authDomain":"webfejl-kotprog-2024.firebaseapp.com","messagingSenderId":"1082888666344","measurementId":"G-VK7JBFDFL0"}),
+    // provideFirebaseApp(() => initializeApp({"projectId":"webfejl-kotprog-2024","appId":"1:1082888666344:web:04fce4b4b12dc29a7d9d5d","storageBucket":"webfejl-kotprog-2024.appspot.com","apiKey":"AIzaSyAdfvo_5fRpmK_jncaQQVKFDwpc8-lij6c","authDomain":"webfejl-kotprog-2024.firebaseapp.com","messagingSenderId":"1082888666344","measurementId":"G-VK7JBFDFL0"})),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
   ],
   providers: [],
   bootstrap: [AppComponent]
