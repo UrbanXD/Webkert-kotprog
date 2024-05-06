@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "webfejl-kotprog-2024"
+  },
+  "targets": {
+    "webfejl-kotprog-2024": {
+      "hosting": {
+        "webkert-kotprog": [
+          "webfejl-kotprog-2024"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
