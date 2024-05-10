@@ -10,6 +10,7 @@ export class SideMenuComponent {
   @Input() loggedInUser?: firebase.User | null;
   @Output() onCloseSideNav: EventEmitter<boolean> = new EventEmitter();
   @Output() onLogout: EventEmitter<boolean> = new EventEmitter();
+  @Output() onDeleteUser: EventEmitter<string> = new EventEmitter();
 
   close(){
     this.onCloseSideNav.emit(true);
@@ -17,5 +18,9 @@ export class SideMenuComponent {
 
   logout(){
     this.onLogout.emit(true);
+  }
+
+  deleteUser(){
+    this.onDeleteUser.emit(this.loggedInUser?.uid as string)
   }
 }

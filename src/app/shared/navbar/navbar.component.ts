@@ -10,10 +10,10 @@ import firebase from "firebase/compat";
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  // @Input() sidenav: MatSidenav | null = null;
   @Input() loggedInUser?: firebase.User | null;
   @Output() onToggleSideNav: EventEmitter<boolean> = new EventEmitter();
   @Output() onLogout: EventEmitter<boolean> = new EventEmitter();
+  @Output() onDeleteUser: EventEmitter<string> = new EventEmitter();
 
   toggle(){
     this.onToggleSideNav.emit(true);
@@ -21,5 +21,9 @@ export class NavbarComponent {
 
   logout(){
     this.onLogout.emit(true);
+  }
+
+  deleteUser(){
+    this.onDeleteUser.emit(this.loggedInUser?.uid as string)
   }
 }

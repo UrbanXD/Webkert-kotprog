@@ -17,6 +17,7 @@ const routes: Routes = [
   {
     path: 'register', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule), canActivate: [AuthGuard]
   },
+  { path: 'my-gasmeter', loadChildren: () => import('./pages/my-gasmeter/my-gasmeter.module').then(m => m.MyGasmeterModule), canActivate: [AuthGuard] },
   {
     path: '**', loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule)
   }

@@ -1,5 +1,6 @@
 import {AbstractControl, FormGroup, ValidationErrors, ValidatorFn} from "@angular/forms";
 import {User} from "./models/User";
+import {FormControlName} from "./models/FormControlName";
 
 export const STRONG_PASSWORD_REGX: RegExp = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*?[#?!@$%^.&*-]).+$/;
 export const NAME_REGX: RegExp = /^[a-z ,.'-]+$/;
@@ -9,12 +10,13 @@ const LOWERCASE_LETTER_REGX: RegExp = /(?=.*[a-z])/;
 const SPECIAL_CHARACTER_REGX: RegExp = /(?=.*?[#?!@$%^.&*-])/;
 const NUMBER_REGX: RegExp = /(?=.*\d)/;
 
-const FORM_CONTROL_NAME: User = {
+const FORM_CONTROL_NAME: FormControlName = {
   email: "Emailcím",
-  firstname: "Keresfiztnév",
+  firstname: "Keresztnév",
   lastname: "Vezetéknév",
   password: "Jelszó",
-  rpassword: "Jelszó ujra"
+  rpassword: "Jelszó újra",
+  state: "Gázóra állás"
 }
 
 export const ERROR_MESSAGES: { [key: string]: (...args: any) => string } = {
@@ -45,7 +47,7 @@ export const ERROR_MESSAGES: { [key: string]: (...args: any) => string } = {
   name: (formControlName) => `Nem megfelelő ${formControlName}.`
 };
 
-export function getErrorMessage<Key extends keyof User>(form: FormGroup, formControlName: Key, patternName ?: string){
+export function getErrorMessage<Key extends keyof FormControlName>(form: FormGroup, formControlName: Key, patternName ?: string){
   if (form.get(formControlName)?.hasError('required')){
     return ERROR_MESSAGES['required'](FORM_CONTROL_NAME[formControlName] || "Ismeretlen Dolog") || "Hiba";
   }

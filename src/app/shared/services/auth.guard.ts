@@ -18,8 +18,12 @@ export class AuthGuard{
         this.router.navigateByUrl("/main");
         return false;
       }
+      return true;
+    }
+    if("/my-gasmeter" === state.url){
+      this.router.navigateByUrl("/main");
+      return false;
     }
     return true;
-    //test@gmail.com
   }
 }

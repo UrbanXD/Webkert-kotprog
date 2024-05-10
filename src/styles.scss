@@ -31,7 +31,9 @@ mat-form-field{
 mat-label {
   font-size: 2.25vh !important;
 }
-
+.mat-mdc-form-field-subscript-wrapper, .mat-mdc-form-field-bottom-align::before{
+  height: 0 !important;
+}
 mat-error{
   display: flex !important;
   align-items: center;
@@ -65,4 +67,61 @@ form .form-title{
 mat-sidenav-content{
   background: #818589;
   height: 100vh !important;
+}
+
+.gas-meter{
+  border: 1.5vh solid mat.get-color-from-palette($Webkert-kotprog-primary, default);
+  padding: 5vh 10vw;
+
+  background-color: black;
+  color: white;
+  border-radius: 25%;
+}
+
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 0.35fr);
+  grid-template-rows: 0.25fr;
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+
+  font-family: digital, sans-serif;
+  font-size: 3.75vh; /*5vh*/
+}
+.slot{
+  border: 0.35vh solid mat.get-color-from-palette($Webkert-kotprog-primary, default);
+  width: 3vh; /*3.5*/
+  text-align: center;
+}
+
+.content{
+  font-family: Evogria, sans-serif;
+  font-size: 4vh;
+
+  text-align: center;
+}
+
+@media (max-width: 300px) { /* nagyon kis telefon */
+  .gas-meter{
+    padding: 5vh 4.5vw;
+  }
+}
+
+@media (max-width: 500px) and (min-height: 750px) { /* nagyon nagy, magas telefon */
+  .gas-meter{
+    font-size: 3.25vh;
+  }
+  .gas-meter .slot{
+    width: 2.5vh;
+  }
+}
+
+
+@media (min-width: 500px) { /* tablet / gep nezet */
+  .gas-meter{
+    font-size: 5vh;
+  }
+  .gas-meter .slot{
+    width: 3.5vh;
+  }
 }

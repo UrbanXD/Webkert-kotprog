@@ -3,19 +3,20 @@
     <img src="assets/gazora_logo.png" alt="Logo" class="logo" />
     <div class="title">Nemzeti <span>E</span>-<span>Gaz</span></div>
   </div>
-  <button mat-icon-button fxHide.gt-xs fxLayout fxLayoutAlign="flex-end" (click)="toggle()">
+  <button mat-icon-button fxHide.gt-sm fxLayout fxLayoutAlign="flex-end" (click)="toggle()">
     <mat-icon style="color: whitesmoke">menu</mat-icon>
   </button>
 </div>
-<div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+<div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.lt-sm fxHide.sm>
   <ul fxLayout fxLayoutGap="1.5vh">
     <li><a routerLink="/main" routerLinkActive="active">Főoldal</a></li>
     @if (loggedInUser){
+      <li><a routerLink="/my-gasmeter" routerLinkActive="active">Gázórám</a></li>
       <li><a routerLink="/main" (click)="logout()">Kijelentkezés</a></li>
+      <li><a routerLink="/main" (click)="deleteUser()">Felhasználó törlése</a></li>
     } @else {
       <li><a routerLink="/register" routerLinkActive="active">Regisztráció</a></li>
       <li><a routerLink="/login" routerLinkActive="active">Bejelentkezés</a></li>
     }
-    <li><a routerLink="/not-found" routerLinkActive="active">Not Found</a></li>
   </ul>
 </div>

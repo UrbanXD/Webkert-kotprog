@@ -4,6 +4,8 @@ import { User } from "../../shared/models/User";
 import { getErrorMessage, STRONG_PASSWORD_REGX } from "../../shared/constants";
 import {AuthService} from "../../shared/services/auth.service";
 import {Route, Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {PopupComponent} from "../../shared/popup/popup.component";
 
 @Component({
   selector: 'app-login',
@@ -12,15 +14,12 @@ import {Route, Router} from "@angular/router";
 })
 export class LoginComponent {
   hide = true;
-  asd = new FormGroup({
-    ASD: new FormControl("")
-  })
   loginForm = this.createForm({
     email: '',
     password: ''
   });
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService){ }
+  constructor(private router: Router, private dialog: MatDialog, private formBuilder: FormBuilder, private authService: AuthService){ }
 
   createForm(model: User){
     let formGroup = this.formBuilder.group(model);
@@ -32,9 +31,16 @@ export class LoginComponent {
 
   async login(){
     if(this.loginForm.valid){
-      console.log("xd")
       this.authService.login(this.loginForm?.get('email')?.value!, this.loginForm.get('password')?.value!).then(cred => {
-        console.log("asdddddddddddddd");
+        this.dialog.open(PopupComponent, {
+          width: '50%',
+          height: '20%',
+          enterAnimationDuration: '500ms',
+          exitAnimationDuration: '750ms',
+          data: {
+            title: "Sikeres bejelentkezés!",
+          }
+        })
         this.router.navigateByUrl("/main");
       }).catch(error => {
         console.log(error);

@@ -4,7 +4,9 @@
   </button>
   <a mat-list-item routerLink="/main">Főoldal</a>
   @if (loggedInUser){
+    <a mat-list-item routerLink="/my-gasmeter" routerLinkActive="active">Gázórám</a>
     <a mat-list-item routerLink="/main" (click)="logout()">Kijelentkezés</a>
+    <a mat-list-item routerLink="/main" (click)="deleteUser()">Felhasználó törlése</a>
   } @else {
     <a mat-list-item routerLink="/register" routerLinkActive="active">Regisztráció</a>
     <a mat-list-item routerLink="/login" routerLinkActive="active">Bejelentkezés</a>
