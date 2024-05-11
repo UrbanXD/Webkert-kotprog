@@ -56,7 +56,6 @@ export class RegisterComponent {
         const gasmeter: Gasmeter = {
           id: '',
           userid: user.id as string,
-          currentState: 0
         }
         this.userService.create(user).then(_ => {
           this.dialog.open(PopupComponent, {

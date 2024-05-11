@@ -22,12 +22,6 @@ export class GasmeterService {
     }))
   }
 
-  find(){}
-
-  update(gasmeter: Gasmeter) {
-    return this.afs.collection<Gasmeter>(this.collectionName).doc(gasmeter.userid).update({currentState: gasmeter.currentState})
-  }
-
   deleteByUserID(userid: string) {
     return this.getByUserID(userid).forEach(d => {
       return this.afs.collection<Gasmeter>(this.collectionName).doc(d).delete();

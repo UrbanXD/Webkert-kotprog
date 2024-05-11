@@ -43,7 +43,17 @@ export class LoginComponent {
         })
         this.router.navigateByUrl("/main");
       }).catch(error => {
-        console.log(error);
+        console.log(error)
+        this.dialog.open(PopupComponent, {
+          width: '50%',
+          height: '20%',
+          enterAnimationDuration: '500ms',
+          exitAnimationDuration: '750ms',
+          data: {
+            title: "Sikertelen bejelentkezés!",
+          }
+        })
+        this.loginForm.reset();
       })
     }
   }

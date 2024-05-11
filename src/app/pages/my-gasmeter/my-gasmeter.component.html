@@ -1,4 +1,4 @@
-<div fxFlex fxLayout="column" fxLayoutGap="2vh" fxLayoutAlign="center center">
+<div fxFlex fxLayout="column" fxLayoutAlign="center center" style="margin-top: 2vh;">
   <div class="gas-meter">
     <div class="title">Nemzeti E-Gáz</div>
     <div class="slot-grid">
@@ -14,6 +14,7 @@
   <form [formGroup]="stateForm" (ngSubmit)="addState()" fxLayout="row" fxLayoutAlign="center center" style="padding: 2.5vh 5vw 8.5vh 5vw;">
     <mat-form-field color="accent" style="width: 100% !important;">
       <mat-label>Gázóra állás</mat-label>
+      <input type="hidden" formControlName="currentState">
       <input matInput type="number" formControlName="state" maxlength="10" />
       @if (stateForm.get('state')?.invalid) {
         <mat-error>

@@ -6,7 +6,7 @@ import {AuthService} from "../../shared/services/auth.service";
 import {GasmeterService} from "../../shared/services/gasmeter.service";
 import {GasmeterState} from "../../shared/models/GasmeterState";
 import {DatePipe} from "@angular/common";
-import {getErrorMessage} from "../../shared/constants";
+import {getErrorMessage, StateValidator} from "../../shared/constants";
 import {User} from "../../shared/models/User";
 import {FormBuilder, Validators} from "@angular/forms";
 import {PopupComponent} from "../../shared/popup/popup.component";
@@ -28,17 +28,21 @@ export class MyGasmeterComponent {
   dataSource = new MatTableDataSource<any>([]);
 
   stateForm = this.createForm({
-    state: 0
+    state: 0,
+    currentState: 0
   });
 
-  createForm(model: {state: number}){
-    let formGroup = this.formBuilder.group(model);
-    formGroup.get('state')?.addValidators([Validators.required, Validators.maxLength(10)])
+  createForm(model: {
+    state: number,
+    currentState: number
+  }){
+    let formGroup = this.formBuilder.group(model, {
+      validator: StateValidator('state', 'currentState')
+    });
+    formGroup.get('state')?.addValidators([Validators.required, Validators.max(9999999999)])
 
     return formGroup;
   }
-
-  // User11@gmail.com
 
   @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
 
@@ -51,6 +55,7 @@ export class MyGasmeterComponent {
         this.gasmeterStatesService.getLastChangedInGasmeterID(gasmeterid).subscribe({
           next: value => {
             this.lastChanged = value[0];
+            this.stateForm.get("currentState")?.setValue(value[0].state);
           },
           error: error => {
             console.log(error);
@@ -100,7 +105,9 @@ export class MyGasmeterComponent {
                   date: firebase.firestore.Timestamp.fromDate(new Date())
                 }
                 this.gasmeterStatesService.create(gasmeterState).then(_ => {
-                  console.log("ADDVA");
+                  //popup
+                  this.stateForm.get('state')?.reset();
+                  this.stateForm.get('state')?.setErrors(null);
                 }).catch(error => {
                   console.log(error);
                 })

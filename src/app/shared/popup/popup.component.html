@@ -9,7 +9,7 @@
 }
 <div mat-dialog-actions fxLayout fxLayoutAlign="center center" fxLayoutGap="1.5vh" style="position: absolute; bottom: 0; width: 100%;">
   @if (data?.accept){
-    <button (click)="data?.accept()" mat-raised-button color="accent">Elfogad</button>
+    <button (click)="data?.accept(); close()" mat-raised-button color="accent">Elfogad</button>
   }
   <button (click)="close()" mat-raised-button color="primary">Bezár</button>
 </div>
