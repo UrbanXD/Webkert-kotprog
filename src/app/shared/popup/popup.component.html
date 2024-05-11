@@ -1,11 +1,11 @@
-<h1 mat-dialog-title style="font-size: 3.5vh">
+<h1 mat-dialog-title class="title">
   {{ data?.title ? data?.title : "Overlay" }}
-  <button mat-icon-button (click)="close()" style="position: absolute; right: 0">
+  <button mat-icon-button  fxHide.lt-md (click)="close()" style="position: absolute; right: 0">
     <mat-icon>close</mat-icon>
   </button>
 </h1>
 @if(data?.content){
-  <div mat-dialog-content> {{ data?.content }} </div>
+  <div fxHide.xs mat-dialog-content> {{ data?.content }} </div>
 }
 <div mat-dialog-actions fxLayout fxLayoutAlign="center center" fxLayoutGap="1.5vh" style="position: absolute; bottom: 0; width: 100%;">
   @if (data?.accept){

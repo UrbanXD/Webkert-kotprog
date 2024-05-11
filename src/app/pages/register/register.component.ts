@@ -69,17 +69,36 @@ export class RegisterComponent {
             }
           })
 
-          this.gasmeterService.create(gasmeter).catch(error => {
-            console.log(error);
+          this.gasmeterService.create(gasmeter).catch(_ => {
+            console.log("Hiba a Gasmeter létrehozása során");
           })
-
-        }).catch(error => {
-          console.log(error);
+        }).catch(_ => {
+          this.dialog.open(PopupComponent, {
+            width: '50%',
+            height: '20%',
+            enterAnimationDuration: '500ms',
+            exitAnimationDuration: '750ms',
+            data: {
+              title: "Sikertelen regisztráció!",
+              content: "A regisztráció során váratlan hiba lépett fel. Forduljon a fejlesztőhöz."
+            }
+          })
+          this.registerForm.reset();
         })
 
         this.router.navigateByUrl("/main");
-      }).catch(error => {
-        console.log(error);
+      }).catch(_ => {
+        this.dialog.open(PopupComponent, {
+          width: '50%',
+          height: '20%',
+          enterAnimationDuration: '500ms',
+          exitAnimationDuration: '750ms',
+          data: {
+            title: "Sikertelen regisztráció!",
+            content: "A regisztráció során hiba lépett fel. Előfordulhat, hogy az adott email címmel már létezik felhasználó."
+          }
+        })
+        this.registerForm.reset();
       })
     }
   }

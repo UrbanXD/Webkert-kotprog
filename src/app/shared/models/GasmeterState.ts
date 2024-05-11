@@ -1,7 +1,8 @@
 import { Timestamp } from '@firebase/firestore-types';
 
-export interface GasmeterState{
+export interface GasmeterState {
+  id?: string,
   gasmeterid: string,
   state: number,
-  date: Timestamp;
+  date?: Timestamp
 }

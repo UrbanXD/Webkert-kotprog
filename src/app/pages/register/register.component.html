@@ -1,8 +1,8 @@
 <div fxFlex>
   <form [formGroup]="registerForm" (ngSubmit)="register();" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5vh" style="padding: 7.5vh 5vw;">
-    <div class="form-title">Hozz letre uj felhasznalot!</div>
+    <div class="form-title">Hozzon létre egy új felhasználót!</div>
     <mat-form-field color="accent">
-      <mat-label>Emailcim</mat-label>
+      <mat-label>Email cím</mat-label>
       <input matInput type="text" formControlName="email" />
       @if (registerForm.get('email')?.invalid) {
         <mat-error>
@@ -41,7 +41,7 @@
       }
     </mat-form-field>
     <mat-form-field color="accent">
-      <mat-label>Ujra Jelszó</mat-label>
+      <mat-label>Jelszó megismétlése</mat-label>
       <input matInput [type]="hide ? 'password' : 'text'" formControlName="rpassword" />
       @if (!registerForm.get('password')?.invalid && registerForm.get('rpassword')?.invalid) {
         <mat-error>
@@ -49,6 +49,6 @@
         </mat-error>
       }
     </mat-form-field>
-    <button mat-raised-button color="accent">Bejelentkezés</button>
+    <button mat-raised-button color="accent">Regisztráció</button>
   </form>
 </div>

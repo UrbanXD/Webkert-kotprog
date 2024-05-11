@@ -31,7 +31,7 @@ export class LoginComponent {
 
   async login(){
     if(this.loginForm.valid){
-      this.authService.login(this.loginForm?.get('email')?.value!, this.loginForm.get('password')?.value!).then(cred => {
+      this.authService.login(this.loginForm?.get('email')?.value!, this.loginForm.get('password')?.value!).then(_ => {
         this.dialog.open(PopupComponent, {
           width: '50%',
           height: '20%',
@@ -42,8 +42,7 @@ export class LoginComponent {
           }
         })
         this.router.navigateByUrl("/main");
-      }).catch(error => {
-        console.log(error)
+      }).catch(_ => {
         this.dialog.open(PopupComponent, {
           width: '50%',
           height: '20%',
@@ -51,6 +50,7 @@ export class LoginComponent {
           exitAnimationDuration: '750ms',
           data: {
             title: "Sikertelen bejelentkezés!",
+            content: "Rossz email cím és/vagy jelszó. Próbálkozz újra!"
           }
         })
         this.loginForm.reset();

@@ -2,7 +2,7 @@
   <form [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5vh" style="padding: 7.5vh 5vw;">
     <div class="form-title">Jelentkezz be!</div>
       <mat-form-field color="accent">
-        <mat-label>Emailcim</mat-label>
+        <mat-label>Email cím</mat-label>
         <input matInput type="text" formControlName="email" />
         @if (loginForm.get('email')?.invalid) {
           <mat-error>

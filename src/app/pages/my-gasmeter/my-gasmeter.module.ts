@@ -11,6 +11,8 @@ import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButton, MatIconButton} from "@angular/material/button";
+import {AppModule} from "../../app.module";
+import {DateFormatPipe} from "../../shared/pipes/date-format.pipe";
 
 
 const routes: Routes = [
@@ -37,10 +39,11 @@ const routes: Routes = [
     MatIconButton,
     MatSuffix,
     MatButton,
+    DateFormatPipe
   ],
   providers: [
     { provide: MatPaginatorIntl, useClass: MyPaginatorIntl },
-    DatePipe,
+    DateFormatPipe
   ],
 })
 export class MyGasmeterModule { }

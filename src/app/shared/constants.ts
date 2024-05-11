@@ -25,7 +25,7 @@ export const ERROR_MESSAGES: { [key: string]: (...args: any) => string } = {
   minlength: (formControlName, minLength) => `${formControlName} legalább ${minLength} karakter hosszú kell, hogy legyen.`,
   maxlength: (formControlName, maxLength, isNumberType = false) => `${formControlName} maximum ${!isNumberType ? maxLength : Math.abs(maxLength).toString().length} karakter hosszú lehet.`,
   strongpassword: (formControlName, value) => {
-    let message = `A ${formControlName} erőssége nem megfelelő.\n`;
+    let message = `A ${formControlName} nem megfelelő. `;
     let hints: Array<string> = [];
 
     if(!UPPERCASE_LETTER_REGX.test(value)){
@@ -40,7 +40,7 @@ export const ERROR_MESSAGES: { [key: string]: (...args: any) => string } = {
     if(!NUMBER_REGX.test(value)){
       hints.push('szám');
     }
-    console.log(hints, value);
+
     return message + (hints.length > 0 ? `(${hints.join(', ')})` : '');
   },
   matchingpassword: () => "A megadott jelszavak nem egyeznek.",

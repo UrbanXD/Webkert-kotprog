@@ -12,7 +12,9 @@ export class UserService {
   create(user: User) {
     return this.afs.collection<User>(this.collectionName).doc(user.id).set(user)
   }
-  find(){}
+  findByUserID(userid: string){
+    return this.afs.collection<User>(this.collectionName, ref => ref.where("id", "==", userid).limit(1)).valueChanges()
+  }
   delete(userid: string){
     return this.afs.collection<User>(this.collectionName).doc(userid).delete();
   }

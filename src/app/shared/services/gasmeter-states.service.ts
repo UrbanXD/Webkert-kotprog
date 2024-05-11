@@ -12,7 +12,14 @@ export class GasmeterStatesService {
   constructor(private afs: AngularFirestore) { }
 
   create(gasmeterState: GasmeterState){
-    return this.afs.collection<GasmeterState>(this.collectionName).doc(this.afs.createId()).set(gasmeterState);
+    gasmeterState.id = this.afs.createId();
+    return this.afs.collection<GasmeterState>(this.collectionName).doc(gasmeterState.id).set(gasmeterState);
+  }
+
+  update(gasmeterid: string, newState: number){
+    return this.getLastChangedInGasmeterID(gasmeterid).forEach(value => {
+        return this.afs.collection<GasmeterState>(this.collectionName).doc(value[0].id).update({state: newState});
+    });
   }
 
   getLastChangedInGasmeterID(gasmeterid: string){

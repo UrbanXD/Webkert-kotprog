@@ -8,8 +8,6 @@
   align-items: center;
   justify-content: center;
 
-  //height: 100vh;
-
   color: mat.get-color-from-palette($Webkert-kotprog-accent, default);
   text-align: center;
 }
@@ -20,12 +18,18 @@ img{
 
 .title {
   font-size: 5vh;
+  font-weight: bold;
   margin-top: -2vh;
+
+  text-shadow: -0.5px 0.5px 0 black, 0.5px 0.5px 0 black, 0.5px -0.5px 0 black, -0.5px -0.5px 0 black;
 }
 
 .description {
   font-size: 3vh;
+  font-weight: bold;
   margin-top: -1.5vh;
+
+  text-shadow: -0.5px 0.5px 0 black, 0.5px 0.5px 0 black, 0.5px -0.5px 0 black, -0.5px -0.5px 0 black;
 }
 
 a {
