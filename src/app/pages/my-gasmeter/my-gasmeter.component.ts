@@ -60,8 +60,7 @@ export class MyGasmeterComponent {
       }
     })
 
-    const data = this.gasmeterService.getByUserID(this.loggedInUser?.uid ? this.loggedInUser.uid : "-1");
-    data.subscribe({
+    this.gasmeterService.getByUserID(this.loggedInUser?.uid ? this.loggedInUser.uid : "-1").subscribe({
       next: (gasmeterid) => {
         this.gasmeterStatesService.getLastChangedInGasmeterID(gasmeterid).subscribe({
           next: value => {
@@ -82,7 +81,6 @@ export class MyGasmeterComponent {
 
         this.gasmeterStatesService.getAllByGasmeterID(gasmeterid).subscribe({
           next: value => {
-            console.log("4")
             this.dataSource.data = [];
             value.forEach(gasmeter => {
               let asd: any[] = this.dataSource.data;

@@ -6,6 +6,8 @@ import {Router} from "@angular/router";
 import {UserService} from "./shared/services/user.service";
 import {GasmeterService} from "./shared/services/gasmeter.service";
 import {GasmeterStatesService} from "./shared/services/gasmeter-states.service";
+import {PopupComponent} from "./shared/popup/popup.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-root',
@@ -15,7 +17,7 @@ import {GasmeterStatesService} from "./shared/services/gasmeter-states.service";
 export class AppComponent {
   title = 'Webkert-kotprog';
   loggedInUser?: firebase.User | null;
-  constructor(private router: Router, private authService: AuthService, private userService: UserService, private gasmeterService: GasmeterService, private gasmeterStatesService: GasmeterStatesService) { }
+  constructor(private router: Router, private dialog: MatDialog,private authService: AuthService, private userService: UserService, private gasmeterService: GasmeterService, private gasmeterStatesService: GasmeterStatesService) { }
 
   ngOnInit(){
     this.authService.isUserLoggedIn().subscribe({
@@ -49,34 +51,52 @@ export class AppComponent {
 
   deleteUser(userid: string){
     this.userService.delete(userid).then(_ => {
-      console.log("FELHASZNALO TORLVE")
       this.authService.delete().then(_ => {
-        console.log("FELHASZNALO TORLVE AUTH")
+        this.dialog.open(PopupComponent, {
+          width: '50%',
+          height: '20%',
+          enterAnimationDuration: '500ms',
+          exitAnimationDuration: '750ms',
+          data: {
+            title: "Sikeres felhasználó törlés!",
+          }
+        });
         this.gasmeterService.deleteByUserID(userid).then(_ => {
-          console.log("gasmeter TORLVE")
           this.gasmeterService.getByUserID(userid).subscribe({
-            next: (gasmeterid) => {
+            next: gasmeterid => {
               this.gasmeterStatesService.deleteByGasmeterID(gasmeterid).then(_ => {
-                console.log("states TORLVE")
-              }).catch(error => {
-                console.log(error);
+              }).catch(_ => {
+                //
               })
             },
-            error: error => {
-              console.log(error);
+            error: _ => {
+              //
             }
-          });
-        }).catch(error => {
-          console.log(error);
+          })
+        }).catch(_ => {
+          //
         });
-
-        //popup
-
-      }).catch(error => {
-        console.log(error);
+      }).catch(_ => {
+        this.dialog.open(PopupComponent, {
+          width: '50%',
+          height: '20%',
+          enterAnimationDuration: '500ms',
+          exitAnimationDuration: '750ms',
+          data: {
+            title: "Sikertelen felhasználó törlés!",
+          }
+        });
       });
-    }).catch(error => {
-      console.log(error);
+    }).catch(_ => {
+      this.dialog.open(PopupComponent, {
+        width: '50%',
+        height: '20%',
+        enterAnimationDuration: '500ms',
+        exitAnimationDuration: '750ms',
+        data: {
+          title: "Sikertelen felhasználó törlés!",
+        }
+      });
     });
     this.router.navigateByUrl("/main");
   }

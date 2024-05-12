@@ -22,6 +22,7 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {ReactiveFormsModule} from "@angular/forms";
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import {DateFormatPipe} from "./shared/pipes/date-format.pipe";
+import {environment} from "../environments/environment.production";
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,30 +43,13 @@ import {DateFormatPipe} from "./shared/pipes/date-format.pipe";
     MatDialogModule,
     FlexLayoutModule,
     MatListModule,
-    AngularFireModule.initializeApp({
-      "projectId": "webfejl-kotprog-2024",
-      "appId": "1:1082888666344:web:04fce4b4b12dc29a7d9d5d",
-      "storageBucket": "webfejl-kotprog-2024.appspot.com",
-      "apiKey": "AIzaSyAdfvo_5fRpmK_jncaQQVKFDwpc8-lij6c",
-      "authDomain": "webfejl-kotprog-2024.firebaseapp.com",
-      "messagingSenderId": "1082888666344",
-      "measurementId": "G-VK7JBFDFL0"
-    }),
-    // provideFirebaseApp(() => initializeApp({"projectId":"webfejl-kotprog-2024","appId":"1:1082888666344:web:04fce4b4b12dc29a7d9d5d","storageBucket":"webfejl-kotprog-2024.appspot.com","apiKey":"AIzaSyAdfvo_5fRpmK_jncaQQVKFDwpc8-lij6c","authDomain":"webfejl-kotprog-2024.firebaseapp.com","messagingSenderId":"1082888666344","measurementId":"G-VK7JBFDFL0"})),
+    AngularFireModule.initializeApp(environment.firebase),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     MatButton,
     ReactiveFormsModule,
-    provideFirebaseApp(() => initializeApp({
-      "projectId": "webfejl-kotprog-2024",
-      "appId": "1:1082888666344:web:04fce4b4b12dc29a7d9d5d",
-      "storageBucket": "webfejl-kotprog-2024.appspot.com",
-      "apiKey": "AIzaSyAdfvo_5fRpmK_jncaQQVKFDwpc8-lij6c",
-      "authDomain": "webfejl-kotprog-2024.firebaseapp.com",
-      "messagingSenderId": "1082888666344",
-      "measurementId": "G-VK7JBFDFL0"
-    })),
+    // provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideDatabase(() => getDatabase()),
   ],
   providers: [],
