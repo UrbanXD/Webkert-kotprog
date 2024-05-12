@@ -3,7 +3,7 @@ import {User} from "./models/User";
 import {FormControlName} from "./models/FormControlName";
 
 export const STRONG_PASSWORD_REGX: RegExp = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*?[#?!@$%^.&*-]).+$/;
-export const NAME_REGX: RegExp = /^[a-z ,.'-]+$/;
+export const NAME_REGX: RegExp = /^[a-zA-Z ,.'-]+$/;
 
 const UPPERCASE_LETTER_REGX: RegExp = /(?=.*[A-Z])/;
 const LOWERCASE_LETTER_REGX: RegExp = /(?=.*[a-z])/;
